@@ -1,4 +1,33 @@
-body{
-    background-color: #ff0000;
-    background-image: linear-gradient(180deg, #ff0000 0%, #010204 50%, #FFFFFF 100%);
+body {
+    background-image: linear-gradient(180deg, #FF0000 0%, #000000 50%, #FFFFFF 100%);
+    height: 725px;
+}
+
+/*Header y sus elementos*/
+
+.header{
+}
+
+.pokebola{
+    height: 25px;
+}
+
+/*Section y sus elementos*/
+.section{
+    position: relative;
+}
+
+.card{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*Footer y sus elementos*/
+.footer{
+    position: fixed;
+    bottom: 0%;
+    right: 0%;
+    justify-content: end;
 }
