@@ -20,18 +20,20 @@ function normalizeData(data) {
 
 function getDataPokemon(url){
     fetch(url)
-    .then(response => response.json())
-    .then(data => fillData(data))
+        .then(response => response.json())
+        .then(data => fillData(data))
 }
 
 function fillData(data){
-    
+
     let name = data.species.name;
     let numDex = data.id;
     let type1 = data.types[0].type.name;
+    let tipo2 = document.getElementById('type2');
+    tipo2.innerHTML = "";
+    
     if(data.types.length>1){
         let type2 = data.types[1].type.name;
-        let tipo2 = document.getElementById('type2');
         tipo2.innerHTML = type2;
     }
 
@@ -42,9 +44,9 @@ function fillData(data){
     nombre.innerHTML = name;
 
     let num = document.getElementById('num');
-    num.innerHTML = numdex;
+    num.innerHTML = numDex;
 
-    let type1 = document.getElementById('type1');
+    let tipo1 = document.getElementById('type1');
     tipo1.innerHTML = type1;
 
     let imagen = document.getElementById('sprite')
@@ -104,7 +106,7 @@ function fillList(pokes){
 
         let name = pokes[i].pokemon;
         let api = pokes[i].api;
-        let data = `a class='dropdown-item' onclick='getDataPokemon("${api}")' >${name}</a>`;
+        let data = `<a class='dropdown-item' onclick='getDataPokemon("${api}")' >${name}</a>`;
         poke.innerHTML = data
         ul.appendChild(poke);
     }
