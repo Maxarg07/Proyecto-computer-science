@@ -25,6 +25,7 @@ function getDataPokemon(url){
 }
 
 function fillData(data){
+    
     let name = data.species.name;
     let numDex = data.id;
     let type1 = data.types[0].type.name;
@@ -53,6 +54,62 @@ function fillData(data){
     imagenShiny.setAttribute("src", shinySprite);
     
 }
+
+function changeSprite(){
+    let imagen = document.getElementById('sprite')
+    let imagenShiny = document.getElementById('Shinysprite')
+
+    if (imagenShiny.style.display === "block") {
+        imagenShiny.style.display = "none";
+    } else {
+        imagenShiny.style.display = "block";
+    }
+
+    if (imagen.style.display === "none") {
+        imagen.style.display = "block";
+    } else {
+        imagen.style.display = "none";
+    }
+}
+
+function search(){
+    let box = document.getElementById('searchbar');
+
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("pokedex");
+    li = ul.getElementsByTagName("li");
+    if (input.value){
+        box.style.display = "block";
+    } else {
+        box.style.display = "none";
+    }
+    for (i = 0; i < li.length; i++) {
+        txtValue = li[i].innerHTML;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display ="none";
+        }
+    }
+
+}
+
+function fillList(pokes){
+    let ul = document.getElementById('pokedex');
+
+    for (let i=0; i <=pokes.length-1; i++){
+        let poke = document.createElement("LI");
+
+        let name = pokes[i].pokemon;
+        let api = pokes[i].api;
+        let data = `a class='dropdown-item' onclick='getDataPokemon("${api}")' >${name}</a>`;
+        poke.innerHTML = data
+        ul.appendChild(poke);
+    }
+}
+
 
 
 document.addEventListener("DOMContentLoaded", function(event) {
