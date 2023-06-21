@@ -1,11 +1,14 @@
+//declarando el arreglo
 let pokemon = [];
 
+//mandar a llamar el json
 function getDataFromJson(){
     fetch('..\\js\\pokedex.json')
         .then(response => response.json())
         .then(data => normalizeData(data.results))
 }
 
+//Obtener json como array y asi obtener sus valores
 function normalizeData(data) {
     for (let i=0; i<=data.length-1; i++) {
         const poke = {
@@ -18,12 +21,14 @@ function normalizeData(data) {
     return(pokemon);
 }
 
+//hace la peticion a la api para obtener los datos
 function getDataPokemon(url){
     fetch(url)
         .then(response => response.json())
         .then(data => fillData(data))
 }
 
+//modifica los valores dentro de la carga
 function fillData(data){
 
     let name = data.species.name;
@@ -31,7 +36,7 @@ function fillData(data){
     let type1 = data.types[0].type.name;
     let tipo2 = document.getElementById('type2');
     tipo2.innerHTML = "";
-    
+
     if(data.types.length>1){
         let type2 = data.types[1].type.name;
         tipo2.innerHTML = type2;
@@ -57,6 +62,7 @@ function fillData(data){
     
 }
 
+//para ocultar o mostrar la imagen del pokemon en shiny
 function changeSprite(){
     let imagen = document.getElementById('sprite')
     let imagenShiny = document.getElementById('Shinysprite')
@@ -74,12 +80,13 @@ function changeSprite(){
     }
 }
 
+//para realizar la busqueda despues de escribir
 function search(){
     let box = document.getElementById('searchbar');
 
     var input, filter, ul, li, a, i, txtValue;
     input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
+    filter = input.value.toUpperCase(); //realiza la busqueda sin importar si son mayusculas o minusculas
     ul = document.getElementById("pokedex");
     li = ul.getElementsByTagName("li");
     if (input.value){
@@ -98,6 +105,7 @@ function search(){
 
 }
 
+//para obtener la lista y mandar a llamar la informacion de la api
 function fillList(pokes){
     let ul = document.getElementById('pokedex');
 
@@ -113,7 +121,7 @@ function fillList(pokes){
 }
 
 
-
+//evento que llama al json (se lee, se normaliza, se llena la lista y se hace una url la cual se llama)
 document.addEventListener("DOMContentLoaded", function(event) {
     getDataFromJson();
     let box = document.getElementById('searchbar');

@@ -41,6 +41,14 @@ body {
     object-fit: contain;
 }
 
+#searchbar{
+    display: none;
+}
+
+#Shinysprite{
+    display: none;
+}
+
 /*Footer y sus elementos*/
 .footer{
     position: fixed;
