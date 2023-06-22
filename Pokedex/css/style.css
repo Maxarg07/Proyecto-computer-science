@@ -16,18 +16,30 @@ body {
 
 /*Section y sus elementos*/
 .card{
-    border-radius: 15px;
-    
-    background-color: transparent;
+    border-radius: 20px;
+    background-color: lightslategrey;
 
+    border-top: black 5px solid;
+    border-right: black 5px solid;
+    border-bottom: black 5px solid;
+    border-left: black 5px solid;
+    
     position: absolute;
-    top: 60%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
+.list-group-item{
+    background-color: lightslategrey;
+}
+
+element.style{
+    width: 200px;
+}
+
 .dex{
-    height: 500px;
+    height: 450px;
 
     position: absolute;
     top: 50%;
@@ -35,12 +47,8 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.dex-marco{
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-}
 
+/*quitar imagen y lista de busqueda*/
 #searchbar{
     display: none;
 }
